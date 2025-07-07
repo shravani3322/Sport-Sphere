@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        .menu-item {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .item-image {
+            max-width: 65%;
+            height: auto;
+            display: inline-flex;
+            border-radius: 0px;
+        }
+
+        .price {
+            color: blue;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .add-to-cart-button {
+            background-color: blueviolet;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body bgcolor="silver">
+<marquee> 
+    <h2><mark>Fitness & Training</mark></h2>
+</marquee>
+____________________________________________________________________________________________________________________________
+
+<h1>Yoga Gear</h1>
+
+<div class="menu-item">
+    <table>
+        <tr>
+            <?php
+            // Database connection
+            $conn = new mysqli("localhost", "root", "", "your_database_name");
+            
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Fetch products for Yoga Gear
+            $sql = "SELECT product_id, product_name, price, image_url FROM products WHERE category = 'Yoga Gear'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<td>";
+                    echo "<img src='" . $row['image_url'] . "' alt='" . $row['product_name'] . "' class='item-image'>";
+                    echo "<p><strong>" . $row['product_name'] . "</strong></p>";
+                    echo "<p class='price'>Price: Rs." . $row['price'] . "</p>";
+                    echo "<button class='add-to-cart-button' onclick=\"addToCart('" . $row['product_name'] . "', " . $row['price'] . ")\">Add to Cart</button>";
+                    echo "</td>";
+                }
+            } else {
+                echo "No products found.";
+            }
+
+            $conn->close();
+            ?>
+        </tr>
+    </table>
+</div>
+____________________________________________________________________________________________________________________________
+
+<h1>Skipping Rope</h1>
+<div class="menu-item">
+    <table>
+        <tr>
+            <?php
+            // Reuse the same database connection logic
+            $conn = new mysqli("localhost", "root", "", "your_database_name");
+
+            // Fetch products for Skipping Rope
+            $sql = "SELECT product_id, product_name, price, image_url FROM products WHERE category = 'Skipping Rope'";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<td>";
+                    echo "<img src='" . $row['image_url'] . "' alt='" . $row['product_name'] . "' class='item-image'>";
+                    echo "<p><strong>" . $row['product_name'] . "</strong></p>";
+                    echo "<p class='price'>Price: Rs." . $row['price'] . "</p>";
+                    echo "<button class='add-to-cart-button' onclick=\"addToCart('" . $row['product_name'] . "', " . $row['price'] . ")\">Add to Cart</button>";
+                    echo "</td>";
+                }
+            } else {
+                echo "No products found.";
+            }
+
+            $conn->close();
+            ?>
+        </tr>
+    </table>
+</div>
+
+<!-- Repeat the above structure for other product categories like Dumbbells, Others, etc. -->
+
+<center>
+    <script>
+        function addToCart(itemName, itemPrice) {
+            // Add your logic to handle adding items to the shopping cart
+            alert(`Added ${itemName} to the cart. Price: Rs${itemPrice}`);
+            window.location.href = "http://localhost/TY%20projrct/finalpro/payment.html";
+        }
+    </script>
+</center>
+
+<br>
+<br>
+
+<!-- Footer or Go Back button -->
+<button onclick="redirectToPage()">Go Back</button>
+
+<script>
+    function redirectToPage() {
+        window.location.href = "http://localhost/TY%20projrct/finalpro/webp.php"; 
+    }
+</script>
+
+</body>
+</html>
