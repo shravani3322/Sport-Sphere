@@ -35,3 +35,11 @@ The project was built using **PHP**, **MySQL**, and basic frontend technologies 
 
 This project is developed for educational purposes only.  
 © 2025 Shravani Navale
+##Screenshots of Website:
+![Screenshot 2024-10-23 103916](https://github.com/user-attachments/assets/f7a9607d-0599-4780-ae5c-9462e979b6a9)
+![Screenshot 2024-10-23 103846](https://github.com/user-attachments/assets/53b14585-a489-4847-b252-4a02ba1b07bf)
+![Screenshot 2024-10-23 103801](https://github.com/user-attachments/assets/f86fc177-3e6d-4422-8ca5-4095e22f70ac)
+![Screenshot 2024-10-23 103949](https://github.com/user-attachments/assets/07586618-6a07-4abc-8933-37028205646f)
+
+
+
